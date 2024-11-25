@@ -44,6 +44,7 @@ We can define the problem as a Markov Chain, where each node of the graph corres
 Since our 4-regular graph is connected and there exists a path between every two nodes, the Markov Chain represented by it is irreducible (all states can be reached from all other states).
 We can also prove that this Markov Chain is aperiodic. A period *d* of a state *i* is defined as:
 * *d(i) = gcd{n|P^n(i,i)>0}*,
+
 where *P^n(i,i)* is the probability of returning to state *i* after *n* steps (in our case, a state *i* corresponds to a node in the graph which represents the matrix AxB; each state *i* represents an element of the AxB matrix with coordinates (a,b), 1 < a < A, 1 < b < B). Since the chain is irreducible, and transitions are random, it is possible to return to state *i* after 1, 2, 3, or any number of steps *n*. The greates common denominator of a set that contains all such *n* (defined with *d(i) = gcd{n|P^n(i,i)>0}*) is 1, hence the Markov Chain is aperiodic. It is also positively recurrent, since the AxB grid it represents is finite.
 
 
