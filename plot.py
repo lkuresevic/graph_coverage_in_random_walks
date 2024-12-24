@@ -135,5 +135,78 @@ def result_distribution(csv_file):
     plt.legend(loc='best', fontsize=10, frameon=True, shadow=True, title="Legend")
     plt.grid(True)
     plt.show()
+    
+def plot_results_single(csv_file):
+    percentages = []
+    with open("Results/" + csv_file, 'r') as csvfile:
+        data = csv.reader(csvfile, delimiter=',')
+        for row in data:
+            try:
+                moves_used = float(row[0])
+                move_limit = float(row[1])
+                percentages.append((moves_used, move_limit))
+            except ValueError:
+                continue
+   
+    heuristic_data = percentages
+    # Define thresholds
+    thresholds = list(range(100, 0, -10))  # [100, 90, 80, ..., 10]
+    
+    total_runs = len(heuristic_data)
+    bins = {}
+    for threshold in thresholds:
+        count = sum((moves / limit) < (threshold / 100.0) for moves, limit in heuristic_data)
+        bins[f"<{threshold}%"] = (count / total_runs) * 100
 
-result_distribution("stats")
+    heuristic_bins = bins
+    
+    # Bar chart data
+    categories = list(heuristic_bins.keys())
+    heuristic_values = list(heuristic_bins.values())
+    
+    x = range(len(categories))
+    
+    # Plot the histogram
+    bar_width = 0.35
+    plt.bar(x, heuristic_values, width=bar_width, color='red', label='Heuristic Strategy')
+    
+    # Customization
+    plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45)
+    plt.ylim(90, 100)
+    plt.title("Success Rates Under (%) of Move Limit")
+    plt.xlabel("Tresholds")
+    plt.ylabel("Percentage (%) of Successful Runs")
+    plt.legend(loc='lower left', fontsize=10, frameon=True, shadow=True, title="Legend")
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig(f'Plots/success_rate_thresholds_heuristic_final.png')
+    plt.close('all')
+    
+    percentage_distribution_heuristic = []
+       
+    # Process Heuristic Strategy data
+    with open("Results/" + csv_file, 'r') as csvfile:
+        data = csv.reader(csvfile, delimiter=',')
+        for row in data:
+            try:
+                percentage = round(float(row[0]) / float(row[1]) * 100, 2)
+                percentage_distribution_heuristic.append(percentage)
+            except ValueError:
+                continue
+
+    # Count occurrences of each percentage
+    heuristic_counts = Counter(percentage_distribution_heuristic)
+    
+    # Extract data for scatter plot
+    heuristic_percentages, heuristic_occurrences = zip(*sorted(heuristic_counts.items()))
+
+    # Plot the distribution
+    plt.scatter(heuristic_percentages, heuristic_occurrences, color='red', label='Heuristic Strategy')
+
+    plt.title('Distribution of Frequency')
+    plt.xlabel('Percentage of Moves Used')
+    plt.ylabel('Frequency')
+    plt.legend(loc='best', fontsize=10, frameon=True, shadow=True, title="Legend")
+    plt.grid(True)
+    plt.savefig(f'Plots/freq_distrib_heuristic_final.png')
+    plt.close('all')

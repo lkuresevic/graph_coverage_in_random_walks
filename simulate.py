@@ -52,6 +52,27 @@ def generate_board(max_height, max_width, n, heuristics_on):
                     result_list.append([simulate_random(h, w, s, x_apple, y_apple, x_snake, y_snake), 35*s])
                 print(str(w) + ", " + str(h) + ": " + str(i))
 
+def generate_max_board(n, heuristics_on):
+    for i in range(1, n+1):
+        h = random.randint(2, 1000)
+        w = 1000000//h
+        s = h*w
+        
+        x_apple = random.randrange(0, w)
+        y_apple = random.randrange(0, h)
+        x_snake = random.randrange(0, w)
+        y_snake = random.randrange(0, h)
+        while(x_snake == x_apple):
+            x_snake = random.randrange(0, w)
+        while(y_snake == y_apple):
+            y_snake = random.randrange(0, h)
+        
+        if(heuristics_on):
+            result_list.append([simulate_heuristic(h, w, s, x_apple, y_apple, x_snake, y_snake), 35*s])
+        else:
+            result_list.append([simulate_random(h, w, s, x_apple, y_apple, x_snake, y_snake), 35*s])
+        print(str(i) + ": " + str(w) + ", " + str(h))
+            
 def save_csv(filename):
     with open('Results/' + filename, mode = 'w', newline='') as file:
         writer = csv.writer(file)
@@ -60,13 +81,9 @@ def save_csv(filename):
     
 if __name__ == "__main__":
     random.seed(42)
-     
-    result_list = []
-    generate_board(100, 100, 100, True)
-    save_csv("stats_heuristic.csv")
     
     result_list = []
-    generate_board(100, 100, 100, False)
-    save_csv("stats_random.csv")
-
-    plot_results("stats")
+    generate_max_board(10000, True)
+    save_csv("heuristic_strategy_experiment.csv")
+    
+    plot_results_single("heuristic_strategy_experiment.csv")
