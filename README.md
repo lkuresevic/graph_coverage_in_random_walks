@@ -38,6 +38,7 @@ A deterministic strategy that mimics the behaviour of the random approach and co
 We simulated 100 games for every board size between 2x2 and 100x100. This provided insight into how the strategies performed on A >> B, B >> A and B ~ A boards, although on relatively small grids (maximum S was 10^5, compared to the allowed 10^6).
 
 99.998% of all simulations terminated successfully when the snake utilized the random strategy.
+
 100% of all simulations terminated successfully when the snake utilized the heuristic random strategy.
 
 The first plot displays the number of moves used over a certain board size. It is important to note that there was significantly more small grids in the experiment, which is why there are less statistical outliers for bigger boards. This is particulairly noticable for the random method, whoose outliers deviated from the mean more significantly.
