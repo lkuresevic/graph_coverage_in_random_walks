@@ -82,8 +82,8 @@ def save_csv(filename):
 if __name__ == "__main__":
     random.seed(42)
     
-    result_list = []
-    generate_max_board(10000, True)
-    save_csv("heuristic_strategy_experiment.csv")
+    print(stats("heuristic_strategy_experiment.csv"))
     
-    plot_results_single("heuristic_strategy_experiment.csv")
+    print(stats("stats_heuristic.csv"))
+    
+    print(stats("stats_random.csv"))

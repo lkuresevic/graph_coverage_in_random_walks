@@ -210,3 +210,18 @@ def plot_results_single(csv_file):
     plt.grid(True)
     plt.savefig(f'Plots/freq_distrib_heuristic_final.png')
     plt.close('all')
+    
+def stats(csv_file):
+    num_rows = 0
+    num_fails = 0
+    with open("Results/" + csv_file, 'r') as csvfile:
+        data = csv.reader(csvfile, delimiter=',')
+        for row in data:
+            num_rows += 1
+            try:
+                if int(row[0]) == int(row[1]):
+                    num_fails += 1
+            except ValueError:
+                continue
+    
+    return 100 - float(num_fails)/float(num_rows)
