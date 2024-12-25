@@ -52,6 +52,7 @@ It is appearent that the snake using the heuristic random method finds the apple
 We simulated 10000 games on boards of different dimensions with boards of areas of S ~ 10^6. The smaller experiment sample (compared to the ~1000000 from the first experiment) meant less opportunities for statistical outliers. Still, the general trend is captured, and the conclusions do not contradict those made earlier.
 
 A 100% of all simulations terminated successfully.
+
 ![freq_distrib_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/freq_distrib_heuristic_final.png)
 ![success_rate_tresholds_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/success_rate_thresholds_heuristic_final.png)
 
