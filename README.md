@@ -74,7 +74,8 @@ Calculating the expected **coverage time** of a toroidal graph is a complicated 
 # Code
 The implementation is highly dependant on the game engine within which the strategy is added. For the purposes of simulation, the code was written in python and is avaiable in the repository. However, we provide an additional implementation written in C++.
 
-```#include <bits/stdc++.h>
+```cpp
+#include <bits/stdc++.h>
 
 bool heuristicStrategy(){
 	string move = "":
@@ -86,4 +87,4 @@ bool heuristicStrategy(){
 	}while(!sendSignal(move));
 	
 	return true;
-}``
+}
