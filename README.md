@@ -37,6 +37,9 @@ A deterministic strategy that mimics the behaviour of the random approach and co
 **1. Comparing performance of the random and heuristic random approaches**
 We simulated 100 games for every board size between 2x2 and 100x100. This provided insight into how the strategies performed on A >> B, B >> A and B ~ A boards, although on relatively small grids (maximum S was 10^5, compared to the allowed 10^6).
 
+99.998% of all simulations terminated successfully when the snake utilized the random strategy.
+100% of all simulations terminated successfully when the snake utilized the heuristic random strategy.
+
 The first plot displays the number of moves used over a certain board size. It is important to note that there was significantly more small grids in the experiment, which is why there are less statistical outliers for bigger boards. This is particulairly noticable for the random method, whoose outliers deviated from the mean more significantly.
 ![stats](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/stats.png)
 In order to gain better insight into how many moves the snake took to find the apple in the majority of these simulations, we plot the amount of simulations that utilized a certain percentage of moves.
@@ -47,6 +50,8 @@ This is better demonstrated on the following plot, which compares the percentage
 It is appearent that the snake using the heuristic random method finds the apple in under 20% of the allowed moves, and around 97.5% of the times in under 10% of the allowed moves. What is left is to experimentally examine whether the method becomes obsolete when tested on larger grids, where the 35 multiplier means less.
 **2. Testing the heuristic random approach on larger grid sizes**
 We simulated 10000 games on boards of different dimensions with boards of areas of S ~ 10^6. The smaller experiment sample (compared to the ~1000000 from the first experiment) meant less opportunities for statistical outliers. Still, the general trend is captured, and the conclusions do not contradict those made earlier.
+
+A 100% of all simulations terminated successfully.
 ![freq_distrib_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/freq_distrib_heuristic_final.png)
 ![success_rate_tresholds_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/success_rate_thresholds_heuristic_final.png)
 
