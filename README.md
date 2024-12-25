@@ -1,4 +1,4 @@
-# Graph Coverage In Random Walks
+# Graph Coverage With Random Walks
 
 # Problem Statement
 Imagine that you are playing a snake game on your old Nokia phone that has a screen that has width A and height B. You have a small 1x1 snake that can move up, dow, left, and right, and you start from some random point on your screen. Also, there is some apple (also sized 1x1) in some other random place on the screen. If you hit the right border of the screen and try to move right, your snake will appear on the left border in a symmetrical position. A similar thing would happen if your hit the top border of the screen (your snake will appear at the bottom), left border of the screen (it will appear on the right), and bottom border (it will teleport to the top). Your goal is to eat the apple as in the usual "Snake" game, BUT there are some important limitations of the game:
