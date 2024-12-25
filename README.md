@@ -57,8 +57,8 @@ A 100% of all simulations terminated successfully.
 ![freq_distrib_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/freq_distrib_heuristic_final.png)
 ![success_rate_tresholds_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/success_rate_thresholds_heuristic_final.png)
 
-This concluded our experimental proof of the strategy, which partially validated with probability theory in the following text.
-# Probabilistic basis
+This concluded our experimental proof of the strategy.cha
+# Probabilistic Basis
 The field is given in the form of a grid of dimensions A x B, where the right and left edge, as well as the upper and lower one are connected. We can represent the tiles and their connections as a 4-regular undirected graph. If we can prove that starting from any node we can cover the entire graph with high probability in under 35S turns - by making a random step toward one of the adjacent nodes each turn - we have proof that the snake will have almost certainly reached the apple before running out of moves to make.
 We can define the problem as a Markov Chain, where each node of the graph corresponds to a state. Transitions (steps) between states (nodes) are random, and have equal probability of 0.25 each. 
 Since our 4-regular graph is connected and there exists a path between every two nodes, the Markov Chain represented by it is irreducible (all states can be reached from all other states).
@@ -70,3 +70,23 @@ where *P^n(i,i)* is the probability of returning to state *i* after *n* steps (i
 Having established that our Markov Chain is irreducible, aperiodic and positively recurrent, we know it is also **ergodic** (Markov chains modeling finite-state systems with random transitions, as ours is, are well known to be ergodic, but it may have been useful to proove so step by step). This provides us with a key property - **stationary distribution** (a distribution towards which the chain converges to over time, regardless of the starting state). Specifically, given that all nodes are equally accessible and symmetric in the random walk's structure, the stationary distribution is **uniform**, meaning that in the long run, the random walk will visit all nodes with equal probability. For a finite graph with S nodes (representing S tiles of the AxB grid), the probability of being at any specific node converges to 1/S.
 
 Calculating the expected **coverage time** of a toroidal graph is a complicated process, and to our knowledge there does not exist a formula that could legitimately approximate it. However, the uniform distribution property in combination with experimental results is enough to reasonably conclude that the probability of a node staying unvisited after 35S steps is extremely low, especially in the case of the heuristic random approach. 
+
+# Code
+The implementation is highly dependant on the game engine within which the strategy is added. For the purposes of simulation, the code was written in python and is avaiable in the repository. However, we provide an additional implementation written in C++.
+
+#include <bits/stdc++.h>
+
+``
+bool heuristicStrategy(){
+	string move = "":
+	do{
+		if(rand()%2 == 0)
+			move = "RIGHT";
+		else
+			move = "UP";
+	}while(!sendSignal(move));
+	
+	return true;
+}
+``
+
