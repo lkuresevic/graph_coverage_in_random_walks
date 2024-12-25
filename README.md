@@ -76,7 +76,7 @@ The implementation is highly dependant on the game engine within which the strat
 
 #include <bits/stdc++.h>
 
-``bool heuristicStrategy(){
+```bool heuristicStrategy(){
 	string move = "":
 	do{
 		if(rand()%2 == 0)
@@ -86,4 +86,4 @@ The implementation is highly dependant on the game engine within which the strat
 	}while(!sendSignal(move));
 	
 	return true;
-}``
+}```
