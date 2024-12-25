@@ -57,7 +57,7 @@ A 100% of all simulations terminated successfully.
 ![freq_distrib_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/freq_distrib_heuristic_final.png)
 ![success_rate_tresholds_heuristic_final](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/success_rate_thresholds_heuristic_final.png)
 
-This concluded our experimental proof of the strategy.cha
+This concluded our experimental examination of the strategy.
 # Probabilistic Basis
 The field is given in the form of a grid of dimensions A x B, where the right and left edge, as well as the upper and lower one are connected. We can represent the tiles and their connections as a 4-regular undirected graph. If we can prove that starting from any node we can cover the entire graph with high probability in under 35S turns - by making a random step toward one of the adjacent nodes each turn - we have proof that the snake will have almost certainly reached the apple before running out of moves to make.
 We can define the problem as a Markov Chain, where each node of the graph corresponds to a state. Transitions (steps) between states (nodes) are random, and have equal probability of 0.25 each. 
