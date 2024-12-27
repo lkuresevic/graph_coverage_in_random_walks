@@ -17,14 +17,14 @@ Please note that while you don't know the size of the screen, it can be literall
 
 # Problem Statement Analysis
 Following are a few observations that need to be taken into account for the strategy to be successful:
-* Considering that the strategy needs to perform optimally for a general case, and not favor grids where A >> B or B >> A, roughly the same amount of steps needs to be taken horisontally and vertically.
+* Considering that the strategy needs to perform optimally for a general case, and not favor grids where A >> B or B >> A, roughly the same amount of steps needs to be taken horizontally and vertically.
 * Since it is at no point known at what position on the A*B grid the snake is positioned, it may seem intuitive to spiral around an anchor point (the starting position), with the hope of avoiding visited tiles. However, while this approach performs optimally on grids where the width and the height are about the same - it plays out poorly on all screens which are significantly taller/wider than wide/tall (A >> B or B >> A).
-* Strategies with periodic properties need to be avoided, as they may leed to the snake looping around the grid.
-* Additionaly, attempts to avoid periodicity through determining the number of steps in a direction via a growing function can quickly lead to the snake wasting excessive moves in a single row/column. For f(x) = x^2, assuming that S = 1000000, it would take only a 1000 turns for the snake to move over S moves in a single direction, therefore unecessarily retracing old steps. Even f(x) = x performs poorly. If a function is to be used to combat periodicity, it needs to grow slowly, and is likely not monotonous.
+* Strategies with periodic properties need to be avoided, as they may lead to the snake looping around the grid.
+* Additionally, attempts to avoid periodicity through determining the number of steps in a direction via a growing function can quickly lead to the snake wasting excessive moves in a single row/column. For f(x) = x^2, assuming that S = 1000000, it would take only a 1000 turns for the snake to move over S moves in a single direction, therefore unnecessarily retracing old steps. Even f(x) = x performs poorly. If a function is to be used to combat periodicity, it needs to grow slowly, and is likely not monotonous.
   
 # Strategy Considerations and Experimental Evaluation
 Taking the observations into account, it is reasonable to consider an approach where the snake takes each step in a random direction. 
-* Over a large enough number of moves, the snake ends up moving about the same amount vertically and horisontally
+* Over a large enough number of moves, the snake ends up moving about the same amount vertically and horizontally
 * Long strides in a single direction are improbable and therefore rare
 * The randomness prevents the snake from moving in patterns
 
@@ -41,14 +41,14 @@ We simulated 100 games for every board size between 2x2 and 100x100. This provid
 
 100% of all simulations terminated successfully when the snake utilized the heuristic random strategy.
 
-The first plot displays the number of moves used over a certain board size. It is important to note that there was significantly more small grids in the experiment, which is why there are less statistical outliers for bigger boards. This is particulairly noticable for the random method, whoose outliers deviated from the mean more significantly.
+The first plot displays the number of moves used over a certain board size. It is important to note that there was significantly more small grids in the experiment, which is why there are less statistical outliers for bigger boards. This is particularly noticeable for the random method, whose outliers deviated from the mean more significantly.
 ![stats](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/stats.png)
 In order to gain better insight into how many moves the snake took to find the apple in the majority of these simulations, we plot the amount of simulations that utilized a certain percentage of moves.
 ![stats_histogram](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/stats_distribution.png)
-Although the heuristic strategy's superiority is clear, given that all of its runs terminated succesfully, utilizing less then 50% of allowed moves, we notice that even the random approach performs surprisingly well, with the vast majority of its simulations utilizing under 10% of moves.
-This is better demonstrated on the following plot, which compares the percentage of succesful runs under a given threshold.
+Although the heuristic strategy's superiority is clear, given that all of its runs terminated successfully, utilizing less than 50% of allowed moves, we notice that even the random approach performs surprisingly well, with the vast majority of its simulations utilizing under 10% of moves.
+This is better demonstrated on the following plot, which compares the percentage of successful runs under a given threshold.
 ![stats_histogram](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/stats_histograms.png)
-It is appearent that the snake using the heuristic random method finds the apple in under 20% of the allowed moves, and around 97.5% of the times in under 10% of the allowed moves. What is left is to experimentally examine whether the method becomes obsolete when tested on larger grids, where the 35 multiplier means less.
+It is apparent that the snake using the heuristic random method finds the apple in under 20% of the allowed moves, and around 97.5% of the times in under 10% of the allowed moves. What is left is to experimentally examine whether the method becomes obsolete when tested on larger grids, where the 35 multiplier means less.
 **2. Testing the heuristic random approach on larger grid sizes**
 We simulated 10000 games on boards of different dimensions with boards of areas of S ~ 10^6. The smaller experiment sample (compared to the ~1000000 from the first experiment) meant less opportunities for statistical outliers. Still, the general trend is captured, and the conclusions do not contradict those made earlier.
 
