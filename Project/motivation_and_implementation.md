@@ -11,7 +11,9 @@ A good starting point might be the evaluation of costs of current agent strategi
 * **ReAct** [Yao et. al.](https://arxiv.org/pdf/2210.03629)
 * **Tool-Planning** [Wang et. al.](https://arxiv.org/pdf/2305.04091)
 * **Rule-Based Tool Usage** [Zhang et. al.](https://arxiv.org/pdf/2401.07339)
+
 The most promising strategy can then be redesigned with cost efficiency in mind.
+
 
 Alternatively, the problem might be addressable as a **Markov decision process**. It is possible that a fixed strategy is not the one that provides the best results, as is the case in logic synthesis. An RL agent might be able to avoid unneccessary function calls, and reduce cost in that way. The agent will use a state representation given to him to decide which of the N functions he should call, while being rewarded for solving the task with minimum cost.
 
@@ -20,4 +22,3 @@ This means that the agent has two objectives: solve the task and do so as effici
 The most challenging tasks would be finding a useful state representation, but planning stages in existing strategies might be a good starting point. 
 
 A key task in designing an RL agent would be optimizing the methods that extract state representations, as those methods would be regularly called in between agent's decisions. If a state representation can be designed, such that its extraction cost is cheap, the cost-cutting through elimination unneccessary function calls would be justified. In RL approaches to logic synthesis, an [interesting result](https://arxiv.org/pdf/2205.07614) has shown that a "random tensor" state representation can outperform those based on extracting graph features or statistical information from and-inverter graphs representing the system logic. Perhaps the state representation can be surprisingly simple and easily computable.
-
