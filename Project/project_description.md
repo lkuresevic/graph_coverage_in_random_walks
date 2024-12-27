@@ -17,10 +17,3 @@ Research Significance and Impact:
 
 
 Success in this project has strong potential for a high-quality research publication, as this problem has not yet been thoroughly explored. Furthermore, cost-optimized coding agents have valuable real-world applications, particularly in production environments where resource efficiency is critical.
-
-
-Requirements
-Strong research skills
-Ability to solve really complex tasks
-Basic understanding of statistics and probability theory
-Strong algorithmic background
