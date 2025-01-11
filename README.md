@@ -49,6 +49,7 @@ Although the heuristic strategy's superiority is clear, given that all of its ru
 This is better demonstrated on the following plot, which compares the percentage of successful runs under a given threshold.
 ![stats_histogram](https://github.com/lkuresevic/graph_coverage_with_random_walks/blob/main/Plots/stats_histograms.png)
 It is apparent that the snake using the heuristic random method finds the apple in under 20% of the allowed moves, and around 97.5% of the times in under 10% of the allowed moves. What is left is to experimentally examine whether the method becomes obsolete when tested on larger grids, where the 35 multiplier means less.
+
 **2. Testing the heuristic random approach on larger grid sizes**
 We simulated 10000 games on boards of different dimensions with boards of areas of S ~ 10^6. The smaller experiment sample (compared to the ~1000000 from the first experiment) meant less opportunities for statistical outliers. Still, the general trend is captured, and the conclusions do not contradict those made earlier.
 
